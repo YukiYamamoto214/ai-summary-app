@@ -1,11 +1,18 @@
 from flask import Flask, render_template, request
 import google.generativeai as genai
+import os
 
 # Flaskアプリ初期化
 app = Flask(__name__)
 
-# Gemini API設定
-api_key = "AIzaSyBbP95CHmejnrcDHwUYiMMFjhIN5QzAGXo"
+# Gemini API設定（環境変数から読み込み）
+api_key = os.environ.get('GEMINI_API_KEY')
+if not api_key:
+    # .envファイルから読み込み
+    from dotenv import load_dotenv
+    load_dotenv()
+    api_key = os.environ.get('GEMINI_API_KEY')
+
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-flash-latest')
 

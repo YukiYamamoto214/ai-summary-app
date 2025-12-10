@@ -1,0 +1,17 @@
+# 環境変数ファイル（APIキーを含む）
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
